@@ -1,0 +1,61 @@
+Que:https://practice.geeksforgeeks.org/problems/convert-to-roman-no/1
+Solve:
+void convertToRoman(int n) 
+{
+//Your code here
+int one,ten,hund,thou;
+one=n%10;
+ten=(n%100)/10;
+hund=(n%1000)/100;
+thou=n/1000;
+string str="";
+if(thou>=1&&thou<=3)
+{
+    for(int i=0;i<thou;i++)
+    str=str+'M';
+}
+if(hund>=1&&hund<=3){
+    for(int i=0;i<hund;i++)
+    str=str+'C';
+}
+else if(hund==4)
+str=str+"CD";
+else if(hund==5)
+str=str+'D';
+else if(hund<=8&&hund>=6)
+{  str=str+'D';
+    for(int i=1;i<=hund-5;i++)
+    str=str+'C';
+}
+else if(hund==9)
+str=str+"CM";
+if(ten>=1&&ten<=3){
+    for(int i=0;i<ten;i++)
+    str=str+'X';
+}
+else if(ten==4)
+str=str+"XL";
+else if(ten>=5&&ten<=8){
+    str=str+'L';
+    for(int i=1;i<=ten-5;i++)
+    str=str+'X';
+}
+else if(ten==9)
+str=str+"XC";
+if(one>=1&&one<=3){
+    for(int i=0;i<one;i++)
+    str=str+'I';
+}
+else if(one==4)
+str=str+"IV";
+else if(one>=5&&one<=8){
+    str=str+'V';
+    for(int i=1;i<=one-5;i++)
+    str=str+'I';
+}
+else if(one==9)
+str=str+"IX";
+
+
+cout<<str;
+}

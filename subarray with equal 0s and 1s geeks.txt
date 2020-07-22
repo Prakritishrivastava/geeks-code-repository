@@ -1,0 +1,21 @@
+que:https://practice.geeksforgeeks.org/problems/count-subarrays-with-equal-number-of-1s-and-0s-1587115620/1
+solution:
+long long int countSubarrWithEqualZeroAndOne(int arr[], int n)
+{
+    //Your code here
+    long long sum=0;
+    long long count=0;
+    unordered_map<long long,long long> m;
+    for(long long i=0;i<n;i++){
+        if(arr[i]==0)
+        sum--;
+        else
+        sum++;
+        if(sum==0)
+        count++;
+        if(m.find(sum)!=m.end())
+        count+=m[sum];
+        m[sum]++;
+    }
+    return count;
+}

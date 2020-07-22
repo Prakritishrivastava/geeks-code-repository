@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/match-specific-pattern/1
+
+vector<string> findMatchedWords(vector<string> dict,
+                      string pattern)
+{
+       //Your code here
+       vector<string> v;
+       
+       for(int i=0;i<dict.size();i++){
+           string curr=dict[i];
+           int ans=0;
+           map<char,int> m1;
+           for(int j=0;j<curr.size();j++)
+           m1[curr[j]]++;
+           map<char,int> p;
+           for(int j=0;j<pattern.size();j++)
+           p[pattern[j]]++;
+           for(int j=0;j<curr.size();j++){
+              if(m1[curr[j]]!=p[pattern[j]])
+              {
+                  ans++;
+                  break;
+              }
+           }
+           if(ans==0&&curr.size()==pattern.size())
+           v.push_back(curr);
+       }
+       return v;
+
+}
