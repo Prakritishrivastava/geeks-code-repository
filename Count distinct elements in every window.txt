@@ -1,0 +1,36 @@
+https://practice.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1
+
+vector <int> countDistinct (int a[], int n, int k) {
+    vector<int> v;
+    
+    unordered_map<int,int> mp;
+    unordered_map<int,int> ::iterator itr;
+    for(int i=0;i<k;i++){
+    
+        mp[a[i]]++;
+    }
+    int key=mp.size();
+    int count=0;
+    v.push_back(mp.size());
+    for(int i=0;i<n-k;i++){
+        
+       if(mp[a[i]]==1){
+       
+           
+           key--;
+           
+       }
+       mp[a[i]]--;
+       if(mp.find(a[i+k])==mp.end()||mp[a[i+k]]==0){
+           
+           
+            key++;
+           
+       }
+       mp[a[i+k]]++;
+        v.push_back(key);
+        }
+        
+    
+    return v;
+}
